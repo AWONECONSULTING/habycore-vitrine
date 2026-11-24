@@ -1,0 +1,63 @@
+<section class="band inv" id="contact">
+  <div class="wash" aria-hidden="true"></div>
+  <div class="wrap contact">
+    <div>
+      <div class="kicker rv"><svg viewBox="0 0 187 206"><use href="#hc-mark"/></svg>Contact</div>
+      <h2 class="rv">Let's talk about your project.</h2>
+      <p class="lead rv" style="margin-top:22px">Business collaboration, consulting, training or partnership: tell us about your request and we will get back to you shortly.</p>
+      <div class="sign rv" id="sign" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <defs>
+            <radialGradient id="sgGlow"><stop offset="0" stop-color="#7377FE" stop-opacity=".55"/><stop offset="1" stop-color="#7377FE" stop-opacity="0"/></radialGradient>
+            <radialGradient id="sgFade"><stop offset="0" stop-color="#fff"/><stop offset=".7" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+            <mask id="sgMask"><rect width="400" height="400" fill="url(#sgFade)"/></mask>
+            <linearGradient id="sgGlint" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BDF3DF" stop-opacity="0"/><stop offset=".5" stop-color="#BDF3DF"/><stop offset="1" stop-color="#BDF3DF" stop-opacity="0"/></linearGradient>
+          </defs>
+          <g mask="url(#sgMask)" id="sgGrid"></g>
+          <circle cx="200" cy="200" r="190" fill="url(#sgGlow)"/>
+          <circle class="wave" cx="200" cy="200" r="78"/>
+          <circle class="wave" cx="200" cy="200" r="78" style="animation-delay:1.2s"/>
+          <circle class="wave" cx="200" cy="200" r="78" style="animation-delay:2.4s"/>
+          <circle class="orbit" cx="200" cy="200" r="150"/>
+          <circle class="orbit" cx="200" cy="200" r="118" style="stroke-dasharray:2 7"/>
+          <g class="spin a"><circle cx="350" cy="200" r="6" fill="#BDF3DF"/><circle cx="350" cy="200" r="12" fill="#BDF3DF" opacity=".18"/></g>
+          <g class="spin b"><circle cx="82" cy="200" r="4.5" fill="#B5BAFF"/></g>
+          <svg x="128" y="121" width="144" height="158" viewBox="606 5026 187 206" overflow="visible">
+            <g class="breathe a"><use href="#hc-half-a"/></g>
+            <g class="breathe b"><use href="#hc-half-b"/></g>
+            <path class="sg-glint" pathLength="1" d="M616 5044 C 660 5108 720 5188 776 5224"/>
+          </svg>
+        </svg>
+      </div>
+    </div>
+
+    <form id="form" class="rv" novalidate>
+      <div class="fields">
+        <div class="row">
+          <div class="field"><label for="f-name">Full name <em>*</em></label><input id="f-name" name="name" autocomplete="name" required><span class="msg">Please enter your name.</span></div>
+          <div class="field"><label for="f-company">Company</label><input id="f-company" name="company" autocomplete="organization"></div>
+        </div>
+        <div class="field"><label for="f-email">Business email <em>*</em></label><input id="f-email" name="email" type="email" autocomplete="email" required><span class="msg">Please enter a valid email address.</span></div>
+        <div class="field"><label for="f-subject">Subject of your request <em>*</em></label>
+          <select id="f-subject" name="subject" required>
+            <option value="">Select a subject</option>
+            <option>E-commerce &amp; Brand Development Pack</option>
+            <option>Consulting &amp; Technology Expertise Pack</option>
+            <option>Training &amp; Coaching Pack</option>
+            <option>Business partnership</option>
+            <option>Supplier</option>
+            <option>Other request</option>
+          </select><span class="msg">Please choose the subject of your request.</span></div>
+        <div class="field"><label for="f-msg">Your message <em>*</em></label><textarea id="f-msg" name="message" required></textarea><span class="msg">Please describe your request.</span></div>
+        <label class="consent" id="consentL"><input type="checkbox" id="f-consent" name="consent" required><span>I agree that my data may be used to process my request, in accordance with the <a href="#confidentialite">privacy policy</a>. <em>*</em></span></label>
+        <div class="form-foot"><small>* Required fields</small><button class="btn mag" type="submit">Send message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      </div>
+      <div class="done" role="status" aria-live="polite">
+        <div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="#080C19" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+        <h3>Request ready to send</h3>
+        <p class="soft" style="margin:10px auto 22px;max-width:40ch">Mockup: once live, this form will be connected to HabyCore's mailbox and will confirm receipt.</p>
+        <button class="btn ghost" type="button" id="again">New request</button>
+      </div>
+    </form>
+  </div>
+</section>

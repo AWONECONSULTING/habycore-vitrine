@@ -1,0 +1,59 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  locale?: 'en' | 'fr';
+  title?: string;
+  description?: string;
+}
+
+const { locale = 'en' } = Astro.props;
+const copy = locale === 'en' ? {
+  title: 'HabyCore — Website',
+  description: 'HabyCore is a multidisciplinary company specializing in digital entrepreneurship, e-commerce, technology, consulting and training.',
+  ogTitle: 'HabyCore — Building Businesses. Sharing Expertise.',
+  ogDescription: 'Entrepreneurship, technology and knowledge sharing.',
+  organization: 'Multidisciplinary company: e-commerce and brand development, consulting and technology expertise, professional training.',
+} : {
+  title: 'HabyCore — Site vitrine',
+  description: "HabyCore est une entreprise pluridisciplinaire spécialisée dans l'entrepreneuriat digital, le e-commerce, les technologies, le conseil et la formation.",
+  ogTitle: 'HabyCore — Développer des entreprises. Transmettre notre expertise.',
+  ogDescription: 'Entrepreneuriat, technologie et transmission de compétences.',
+  organization: 'Entreprise pluridisciplinaire : e-commerce et développement de marques, conseil et expertise technologique, formation professionnelle.',
+};
+const { title = copy.title, description = copy.description } = Astro.props;
+
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'HabyCore',
+  slogan: 'Building Businesses. Sharing Expertise.',
+  description: copy.organization,
+};
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:site_name" content="HabyCore" />
+    <meta property="og:title" content={copy.ogTitle} />
+    <meta property="og:description" content={copy.ogDescription} />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={locale === 'en' ? 'en_US' : 'fr_FR'} />
+    <meta name="theme-color" content="#F2F7F5" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+    <script type="application/ld+json" set:html={JSON.stringify(organization)} />
+  </head>
+  <body>
+    <slot />
+    <script>
+      import '../scripts/main.js';
+    </script>
+  </body>
+</html>

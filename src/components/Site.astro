@@ -1,0 +1,61 @@
+---
+import Base from '../layouts/Base.astro';
+import BrandSprite from './BrandSprite.astro';
+import PageIntro from './PageIntro.astro';
+import NavFr from './Nav.astro';
+import HeroFr from './Hero.astro';
+import PillarsFr from './Pillars.astro';
+import CompanyFr from './Company.astro';
+import ActivitiesFr from './Activities.astro';
+import ExpertiseMarquee from './ExpertiseMarquee.astro';
+import MethodFr from './Method.astro';
+import VisionFr from './Vision.astro';
+import PartnersFr from './Partners.astro';
+import ContactFr from './Contact.astro';
+import FooterFr from './Footer.astro';
+import LegalPagesFr from './LegalPages.astro';
+import HeroEn from './en/Hero.astro';
+import PillarsEn from './en/Pillars.astro';
+import CompanyEn from './en/Company.astro';
+import ActivitiesEn from './en/Activities.astro';
+import MethodEn from './en/Method.astro';
+import VisionEn from './en/Vision.astro';
+import PartnersEn from './en/Partners.astro';
+import ContactEn from './en/Contact.astro';
+import NavEn from './en/Nav.astro';
+import FooterEn from './en/Footer.astro';
+import LegalPagesEn from './en/LegalPages.astro';
+
+interface Props { locale?: 'en' | 'fr'; }
+const { locale = 'en' } = Astro.props;
+const Hero = locale === 'en' ? HeroEn : HeroFr;
+const Pillars = locale === 'en' ? PillarsEn : PillarsFr;
+const Company = locale === 'en' ? CompanyEn : CompanyFr;
+const Activities = locale === 'en' ? ActivitiesEn : ActivitiesFr;
+const Method = locale === 'en' ? MethodEn : MethodFr;
+const Vision = locale === 'en' ? VisionEn : VisionFr;
+const Partners = locale === 'en' ? PartnersEn : PartnersFr;
+const Contact = locale === 'en' ? ContactEn : ContactFr;
+const Nav = locale === 'en' ? NavEn : NavFr;
+const Footer = locale === 'en' ? FooterEn : FooterFr;
+const LegalPages = locale === 'en' ? LegalPagesEn : LegalPagesFr;
+---
+
+<Base locale={locale}>
+  <BrandSprite />
+  <PageIntro />
+  <Nav />
+  <main>
+    <Hero />
+    <Pillars />
+    <Company />
+    <Activities />
+    <ExpertiseMarquee />
+    <Method />
+    <Vision />
+    <Partners />
+    <Contact />
+  </main>
+  <Footer />
+  <LegalPages />
+</Base>
