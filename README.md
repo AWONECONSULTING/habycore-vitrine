@@ -88,6 +88,9 @@ Corrections demandées après intégration :
   après leur apparition, sur une amplitude verticale totale de 28 px. Les traits
   suivent leurs bords en coordonnées SVG, y compris lorsque le ratio du visuel
   change avec l’écran. L’effet est désactivé en mouvement réduit.
+- Le cadre du logo reste carré et centré dans la Hero, même sur les tablettes
+  portrait larges (> 960 px). Les bulles ne s’étirent plus sur toute la hauteur
+  du viewport ; le visuel est aussi limité par la hauteur disponible en paysage.
 - Bulle Hero : le mot sortant reste hors du masque au-dessus jusqu’à sa prochaine
   entrée ; il ne redescend plus à travers le mot entrant.
 - Logos Hero et Contact : passage lumineux normalisé sur la longueur du tracé,
@@ -107,10 +110,17 @@ Corrections demandées après intégration :
 - Interactions reprises de la maquette ; le défilement, la rotation des mots et le
   passage lumineux ont reçu les corrections demandées ci-dessus.
 - Vérification syntaxique des scripts JavaScript réussie.
-- Nouvelle tentative de contrôle visuel : Chrome a été accessible initialement,
-  mais l’outil a de nouveau arrêté les interactions faute de pouvoir identifier
-  avec certitude l’URL active. La comparaison visuelle desktop/tablette/mobile
-  et la validation des interactions dans le navigateur restent à effectuer.
+- Contrôle visuel effectué en émulation Chrome : iPhone SE (375 × 667), iPad Mini
+  portrait (768 × 1024) et paysage (1024 × 768). Comparaison avec le fichier anglais
+  aux formats mobile et tablette ; les ajustements validés sont conservés.
+- Éléments inspectés : Hero, CTA, menu replié, cartes d’activités et leurs flèches,
+  méthode et ses flèches, formulaire, messages de validation et pages légales.
+  Les règles responsive de la maquette (1080, 960, 640 et 420 px) sont inchangées.
+- Menu : le libellé du bouton revient à « Open menu » / « Ouvrir le menu » après
+  sélection d’une section, en cohérence avec son état fermé.
+- Méthode : une sélection manuelle annule désormais le prochain changement
+  automatique avant de programmer un nouveau minuteur. La lecture automatique
+  initiale et les animations restent identiques.
 
 Le formulaire conserve le comportement de démonstration de la maquette : validation
 locale et écran « Demande prête à être envoyée ». Il n’envoie aucun message.

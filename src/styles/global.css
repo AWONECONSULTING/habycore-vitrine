@@ -95,8 +95,9 @@ p{margin:0 0 1em;text-wrap:pretty}
 .hero .wash::before{right:-10%;top:-12%;width:min(70vw,900px)}
 .hero-grid{display:grid;flex:1;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,64px);align-items:center;min-height:0}
 @media (min-width:961px){
-  /* Let the text and available viewport size the row, not the square SVG. */
-  .hero .fig-hero{align-self:stretch;aspect-ratio:auto;height:100%}
+  /* Keep SVG and bubble percentages in the same square coordinate system.
+     Center the illustration inside the full-height hero instead of stretching it. */
+  .hero .fig-hero{align-self:center;aspect-ratio:1/1;height:auto;width:min(100%,calc(100svh - clamp(120px,14vh,160px) - clamp(40px,6vh,72px)))}
 }
 .hero h1 .l{display:block;overflow:hidden;padding-bottom:.06em}
 .hero h1 .l>span{display:block}

@@ -53,7 +53,7 @@ const track=document.getElementById('track');track.innerHTML=seq+seq;
 const nav=document.getElementById('nav'),burger=document.getElementById('burger'),prog=document.getElementById('prog');
 burger.addEventListener('click',()=>{const o=nav.classList.toggle('open');burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?copy.closeMenu:copy.openMenu);});
 const links=[...document.querySelectorAll('#menu a')];
-links.forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');burger.setAttribute('aria-expanded','false');}));
+links.forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');burger.setAttribute('aria-expanded','false');burger.setAttribute('aria-label',copy.openMenu);}));
 const secObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(l=>l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id));}});},{rootMargin:'-45% 0px -50% 0px'});
 ['entreprise','activites','methode','vision','contact'].forEach(id=>secObs.observe(document.getElementById(id)));
 
@@ -164,10 +164,10 @@ if(!reduce&&fine){sign.addEventListener('pointermove',e=>{const r=sign.getBoundi
 /* méthode : étapes interactives */
 {const tabsEl=[...document.querySelectorAll('#mth .mt')],panesEl=[...document.querySelectorAll('#mth .mp')],fillEl=document.getElementById('mFill'),tok=document.getElementById('mTok'),mth=document.getElementById('mth');
 let cur=0,timer=null,paused=false,seen=false;const DUR=5000;
-const show=(i,user)=>{cur=i;tabsEl.forEach((t,k)=>{t.classList.toggle('on',k===i);t.classList.toggle('past',k<i);t.classList.remove('run');t.setAttribute('aria-selected',k===i);t.tabIndex=k===i?0:-1;});
+const show=(i,user)=>{if(user)paused=true;cur=i;tabsEl.forEach((t,k)=>{t.classList.toggle('on',k===i);t.classList.toggle('past',k<i);t.classList.remove('run');t.setAttribute('aria-selected',k===i);t.tabIndex=k===i?0:-1;});
   panesEl.forEach((p,k)=>p.classList.toggle('on',k===i));document.getElementById('mCnt').textContent=i+1;fillEl.style.transform=`scaleX(${i/4})`;tok.style.left=`calc(10% + ${i*20}%)`;
   clearTimeout(timer);if(!reduce&&seen&&!paused){void tabsEl[i].offsetWidth;tabsEl[i].style.setProperty('--dur',DUR+'ms');tabsEl[i].classList.add('run');timer=setTimeout(()=>show((cur+1)%5),DUR);}
-  if(user){paused=true;}};
+};
 tabsEl.forEach((t,k)=>{t.addEventListener('click',()=>show(k,true));t.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();const n=(cur+(e.key==='ArrowRight'?1:4))%5;show(n,true);tabsEl[n].focus();}});});
 mth.addEventListener('pointerenter',()=>{if(fine){paused=true;clearTimeout(timer);tabsEl[cur].classList.remove('run');}});
 mth.addEventListener('pointerleave',()=>{if(fine){paused=false;show(cur);}});
