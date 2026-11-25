@@ -113,7 +113,7 @@ const connectorEnds=[
   {edge:'top',dx:50,dy:-12,curve:'230 440 260 410'},
 ];
 const syncHeroConnectors=()=>{
-  if(innerWidth<=960)return; // The reference hides bubbles on smaller layouts.
+  if(!heroNodes[0].getClientRects().length)return; // Mobile hides bubbles; portrait tablets show them.
   const matrix=hsvg.getScreenCTM();
   if(!matrix)return;
   const inverse=matrix.inverse();

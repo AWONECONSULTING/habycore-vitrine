@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="HabyCore - Dev" type="js.build_tools.npm">
+    <package-json value="$PROJECT_DIR$/package.json" />
+    <command value="run" />
+    <scripts>
+      <script value="dev" />
+    </scripts>
+    <node-interpreter value="$USER_HOME$/AppData/Local/JetBrains/IntelliJIdea2026.3/acp-agents/.runtimes/node/24.22.1/node.exe" />
+    <package-manager value="$USER_HOME$/AppData/Local/JetBrains/IntelliJIdea2026.3/acp-agents/.runtimes/node/24.22.1/node_modules/npm" />
+    <envs />
+    <method v="2" />
+  </configuration>
+</component>

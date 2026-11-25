@@ -1,10 +1,10 @@
 <section class="band inv" id="contact">
   <div class="wash" aria-hidden="true"></div>
   <div class="wrap contact">
-    <div>
+    <div class="contact-intro">
       <div class="kicker rv"><svg viewBox="0 0 187 206"><use href="#hc-mark"/></svg>Contact</div>
       <h2 class="rv">Échangeons sur votre projet.</h2>
-      <p class="lead rv" style="margin-top:22px">Collaboration commerciale, prestation de conseil, formation ou partenariat : décrivez-nous votre demande, nous revenons vers vous rapidement.</p>
+      <p class="lead rv">Collaboration commerciale, prestation de conseil, formation ou partenariat : décrivez-nous votre demande, nous revenons vers vous rapidement.</p>
       <div class="sign rv" id="sign" aria-hidden="true">
         <svg viewBox="0 0 400 400">
           <defs>
@@ -31,8 +31,12 @@
       </div>
     </div>
 
-    <form id="form" class="rv" novalidate>
+    <form id="form" class="rv" novalidate aria-labelledby="contact-form-title">
       <div class="fields">
+        <div class="form-heading">
+          <span class="form-heading-icon" aria-hidden="true">↗</span>
+          <div><h3 id="contact-form-title">Parlez-nous de votre idée.</h3><p>Un projet, une question, une nouvelle collaboration.</p></div>
+        </div>
         <div class="row">
           <div class="field"><label for="f-name">Nom et prénom <em>*</em></label><input id="f-name" name="name" autocomplete="name" required><span class="msg">Merci d'indiquer votre nom.</span></div>
           <div class="field"><label for="f-company">Société</label><input id="f-company" name="company" autocomplete="organization"></div>

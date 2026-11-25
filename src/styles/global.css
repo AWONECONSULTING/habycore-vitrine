@@ -623,6 +623,77 @@ footer ul a:hover{color:var(--indigo-d)}
   .doc .kv{grid-template-columns:minmax(0,1fr)}
   .doc .kv dt{border-bottom:0;padding-bottom:2px}
 }
+/* Contact: compact introduction and a clear writing surface. */
+#contact{background:radial-gradient(ellipse at 0% 50%,rgba(98,102,254,.13),transparent 55%),var(--ink)!important}
+#contact .wash{opacity:.45}
+.contact{gap:clamp(40px,5vw,80px);align-items:center}
+.contact-intro{min-width:0}
+.contact-intro h2{max-width:11ch;font-size:clamp(40px,4.2vw,64px);line-height:1.08}
+.contact-intro .lead{margin:24px 0 0;max-width:42ch;font-size:18px;line-height:1.7}
+.contact-intro .sign{width:min(100%,280px);margin:28px 0 0}
+#contact form{position:relative;background:#FAFBFF;color:var(--ink);border:1px solid rgba(181,186,255,.35);border-radius:28px;padding:clamp(24px,3.2vw,48px);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 32px 90px -50px rgba(98,102,254,.45)}
+.form-heading{display:flex;gap:16px;align-items:center;padding-bottom:28px;margin-bottom:28px;border-bottom:1px solid var(--line)}
+.form-heading-icon{flex:none;display:grid;place-items:center;width:48px;height:48px;border-radius:15px;background:#ECECFF;color:var(--indigo-d);font-size:30px;line-height:1}
+.form-heading h3{font-size:26px;line-height:1.15;margin:0 0 6px}
+.form-heading p{font-size:15px;line-height:1.5;color:var(--muted);margin:0}
+#contact .row{gap:20px}
+#contact .field{gap:9px;margin-bottom:22px}
+#contact .field label{font-size:15px}
+#contact .field input,#contact .field select,#contact .field textarea{background-color:#FFF;border-color:#DFE2EC;min-height:58px;border-radius:12px;padding:16px;font-size:16px}
+#contact .field select{padding-right:44px}
+#contact .field textarea{min-height:154px}
+#contact .field input:hover,#contact .field select:hover,#contact .field textarea:hover{border-color:#AFB3D1}
+#contact .field input:focus,#contact .field select:focus,#contact .field textarea:focus{border-color:var(--indigo);box-shadow:0 0 0 4px rgba(98,102,254,.12)}
+#contact .field.err input,#contact .field.err select,#contact .field.err textarea{border-color:#D6455D;background:#FFF6F7}
+#contact .consent{font-size:14px;line-height:1.6;margin:6px 0 26px}
+#contact .form-foot{padding-top:24px;border-top:1px solid var(--line)}
+#contact .form-foot .btn{min-height:60px;padding-inline:30px;font-size:17px;justify-content:center}
+#contact .done h3{color:var(--ink)}
+@media (min-width:641px) and (max-width:1100px), (min-width:641px) and (any-pointer:coarse){
+  .contact{grid-template-columns:minmax(0,1fr);gap:32px}
+  .contact-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(180px,.55fr);column-gap:24px;align-items:center}
+  .contact-intro .kicker,.contact-intro h2,.contact-intro .lead{grid-column:1}
+  .contact-intro h2{font-size:clamp(40px,4.8vw,58px);max-width:15ch}
+  .contact-intro .lead{font-size:19px;margin-top:20px;max-width:48ch}
+  .contact-intro .sign{grid-column:2;grid-row:1 / 4;width:100%;max-width:280px;margin:0;justify-self:center}
+  #contact form{padding:36px}
+  #contact .form-foot .btn{min-height:64px;font-size:18px;min-width:210px}
+}
+@media (max-width:640px){
+  .contact{gap:30px}
+  .contact-intro h2{max-width:14ch;font-size:40px}
+  .contact-intro .lead{font-size:17px;margin-top:20px}
+  .contact-intro .sign{width:160px;margin:12px auto 0}
+  #contact form{border-radius:22px;padding:24px 20px}
+  .form-heading{gap:12px;margin-bottom:24px;padding-bottom:24px}
+  .form-heading-icon{width:40px;height:40px;border-radius:12px}
+  .form-heading h3{font-size:24px}
+  .form-heading p{font-size:14px}
+  #contact .row{grid-template-columns:minmax(0,1fr);gap:0}
+  #contact .form-foot{gap:18px}
+  #contact .form-foot .btn{width:100%;min-height:60px}
+  #contact .form-foot small{order:2;width:100%;text-align:center}
+}
+
+/* Shared tablet composition, including wide touch tablets in landscape. */
+@media (min-width:641px) and (max-width:1100px), (min-width:641px) and (any-pointer:coarse){
+  .hero{padding-top:112px;padding-bottom:48px}
+  .hero>.wrap{justify-content:center;max-width:960px}
+  .hero-grid{flex:none;grid-template-columns:minmax(0,1fr);align-content:start;grid-auto-rows:max-content;gap:24px}
+  .hero-grid>div:first-child{display:contents}
+  .hero .chip{order:1;justify-self:start;margin-bottom:0}
+  .hero h1{order:2;font-size:clamp(52px,6.7vw,64px)}
+  .hero .lead{order:4;font-size:21px;max-width:58ch;margin:0}
+  .hero .cta{order:5;gap:16px}
+  .hero .cta .btn{min-height:64px;min-width:200px;padding-inline:32px;font-size:18px;justify-content:center}
+  .hero .cta .btn svg{width:22px;height:22px}
+  .hero .fig-hero{order:3;width:min(100%,600px,42svh);height:auto;aspect-ratio:1/1;margin:0 auto;overflow:visible}
+  .hero .fig-hero>svg{inset:0;width:100%;height:100%;transform:none}
+  .hero .fig-hero .node{display:flex}
+  .hero .fig-hero .cote,.hero .fig-hero .link{display:inline}
+  .hero .fig-hero #fadeM rect{fill:url(#fadeG)}
+  .hero .fig-hero>svg>rect[fill]{fill:rgba(255,255,255,.45)}
+}
 @media (max-width:420px){
   .mt .lbl{opacity:0;font-size:12px;white-space:nowrap;transition:opacity .3s}
   .mt.on .lbl{opacity:1}

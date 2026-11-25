@@ -91,6 +91,14 @@ Corrections demandées après intégration :
 - Le cadre du logo reste carré et centré dans la Hero, même sur les tablettes
   portrait larges (> 960 px). Les bulles ne s’étirent plus sur toute la hauteur
   du viewport ; le visuel est aussi limité par la hauteur disponible en paysage.
+- Tablettes de 641 à 1100 px et appareils tactiles plus larges, en portrait comme
+  en paysage (dont Surface Pro 10) : même composition verticale resserrée,
+  titre de 52 à 64 px, introduction de 21 px et illustration carrée agrandie avec
+  ses trois bulles flottantes. Les espaces sont fixes entre les éléments ; la
+  hauteur libre centre l’ensemble plutôt que d’étirer chaque rangée. Les traits
+  restent attachés aux bulles à ce format également.
+- CTA de la Hero sur tablette : hauteur minimale de 64 px, texte de 18 px et
+  espacements agrandis pour une lecture et une utilisation tactile confortables.
 - Bulle Hero : le mot sortant reste hors du masque au-dessus jusqu’à sa prochaine
   entrée ; il ne redescend plus à travers le mot entrant.
 - Logos Hero et Contact : passage lumineux normalisé sur la longueur du tracé,
@@ -115,7 +123,11 @@ Corrections demandées après intégration :
   aux formats mobile et tablette ; les ajustements validés sont conservés.
 - Éléments inspectés : Hero, CTA, menu replié, cartes d’activités et leurs flèches,
   méthode et ses flèches, formulaire, messages de validation et pages légales.
-  Les règles responsive de la maquette (1080, 960, 640 et 420 px) sont inchangées.
+  Les seuils de la maquette (1080, 960, 640 et 420 px) sont conservés, avec
+  l’adaptation ciblée des tablettes portrait décrite ci-dessus.
+- Hero Surface Pro 10 contrôlée visuellement en émulation à 960 × 1440 après
+  adaptation : titre agrandi, illustration et trois bulles visibles, composition
+  regroupée et bande noire hors du premier écran.
 - Menu : le libellé du bouton revient à « Open menu » / « Ouvrir le menu » après
   sélection d’une section, en cohérence avec son état fermé.
 - Méthode : une sélection manuelle annule désormais le prochain changement
