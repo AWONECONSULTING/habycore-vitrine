@@ -1,3 +1,6 @@
+---
+import { contactEndpoint } from '../config/contact.js';
+---
 <section class="band inv" id="contact">
   <div class="wash" aria-hidden="true"></div>
   <div class="wrap contact">
@@ -31,17 +34,19 @@
       </div>
     </div>
 
-    <form id="form" class="rv" novalidate aria-labelledby="contact-form-title">
+    <form id="form" class="rv" action={contactEndpoint} method="post" accept-charset="UTF-8" novalidate aria-labelledby="contact-form-title">
+      <input type="hidden" name="language" value="fr">
+      <div class="form-trap" aria-hidden="true"><label for="f-website">Site web</label><input id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
       <div class="fields">
         <div class="form-heading">
           <span class="form-heading-icon" aria-hidden="true">↗</span>
           <div><h3 id="contact-form-title">Parlez-nous de votre idée.</h3><p>Un projet, une question, une nouvelle collaboration.</p></div>
         </div>
         <div class="row">
-          <div class="field"><label for="f-name">Nom et prénom <em>*</em></label><input id="f-name" name="name" autocomplete="name" required><span class="msg">Merci d'indiquer votre nom.</span></div>
-          <div class="field"><label for="f-company">Société</label><input id="f-company" name="company" autocomplete="organization"></div>
+          <div class="field"><label for="f-name">Nom et prénom <em>*</em></label><input id="f-name" name="name" autocomplete="name" maxlength="150" required><span class="msg">Merci d'indiquer votre nom.</span></div>
+          <div class="field"><label for="f-company">Société</label><input id="f-company" name="company" autocomplete="organization" maxlength="200"></div>
         </div>
-        <div class="field"><label for="f-email">E-mail professionnel <em>*</em></label><input id="f-email" name="email" type="email" autocomplete="email" required><span class="msg">Merci d'indiquer une adresse e-mail valide.</span></div>
+        <div class="field"><label for="f-email">E-mail professionnel <em>*</em></label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="254" required><span class="msg">Merci d'indiquer une adresse e-mail valide.</span></div>
         <div class="field"><label for="f-subject">Objet de votre demande <em>*</em></label>
           <select id="f-subject" name="subject" required>
             <option value="">Sélectionnez un objet</option>
@@ -52,14 +57,15 @@
             <option>Fournisseur</option>
             <option>Autre demande</option>
           </select><span class="msg">Merci de choisir l'objet de votre demande.</span></div>
-        <div class="field"><label for="f-msg">Votre message <em>*</em></label><textarea id="f-msg" name="message" required></textarea><span class="msg">Merci de préciser votre demande.</span></div>
+        <div class="field"><label for="f-msg">Votre message <em>*</em></label><textarea id="f-msg" name="message" maxlength="10000" required></textarea><span class="msg">Merci de préciser votre demande.</span></div>
         <label class="consent" id="consentL"><input type="checkbox" id="f-consent" name="consent" required><span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="#confidentialite">politique de confidentialité</a>. <em>*</em></span></label>
-        <div class="form-foot"><small>* Champs obligatoires</small><button class="btn mag" type="submit">Envoyer le message <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+        <p id="form-status" class="form-status" role="status" aria-live="polite" tabindex="-1" hidden></p>
+        <div class="form-foot"><small>* Champs obligatoires</small><button class="btn mag" type="submit"><span data-submit-label>Envoyer le message</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
       </div>
       <div class="done" role="status" aria-live="polite">
         <div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="#080C19" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
-        <h3>Demande prête à l'envoi</h3>
-        <p class="soft" style="margin:10px auto 22px;max-width:40ch">Maquette : à la mise en ligne, ce formulaire sera relié à la messagerie de HabyCore et confirmera la réception.</p>
+        <h3 tabindex="-1">Message envoyé</h3>
+        <p class="soft" style="margin:10px auto 22px;max-width:40ch">Votre demande a bien été transmise à HabyCore. Nous vous répondrons prochainement.</p>
         <button class="btn ghost" type="button" id="again">Nouvelle demande</button>
       </div>
     </form>

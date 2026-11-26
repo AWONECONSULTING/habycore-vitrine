@@ -422,6 +422,10 @@ input:focus,select:focus,textarea:focus{outline:0;border-color:var(--v3);backgro
 .consent a{color:var(--indigo-d)}
 .form-foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
 .form-foot small{font-size:13px;color:var(--muted)}
+.form-trap{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.form-status{font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 18px}
+.form-status.error{color:#B3263E}
+.form-foot .btn:disabled{opacity:.65;cursor:wait}
 .done{display:none;text-align:center;padding:40px 10px}
 .done .ok{width:72px;height:72px;border-radius:50%;background:var(--mint);display:grid;place-items:center;margin:0 auto 18px}
 .done .ok svg{width:34px;height:34px}

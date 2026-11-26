@@ -134,10 +134,35 @@ Corrections demandées après intégration :
   automatique avant de programmer un nouveau minuteur. La lecture automatique
   initiale et les animations restent identiques.
 
-Le formulaire conserve le comportement de démonstration de la maquette : validation
-locale et écran « Demande prête à être envoyée ». Il n’envoie aucun message.
-Le raccordement à une messagerie reste à définir. Les coordonnées et textes légaux
-présents sont repris de la maquette fournie.
+Le formulaire FR/EN utilise l’URL publique centralisée dans `src/config/contact.js` :
+`https://n8n.awone.eu/webhook/habycore-contact-v1`.
+Le workflow unique [HABYCORE | Formulaire de contact](https://n8n.awone.eu/workflow/PiSBgAgiXukZZ1gT)
+valide les champs, les longueurs, le consentement et le champ anti-spam `website`,
+puis envoie le contenu en texte brut à `contact@habycore.com` avec la connexion
+Gmail existante. L’adresse du visiteur est utilisée comme adresse de réponse.
+La confirmation JSON `{ "ok": true }` suit l’envoi Gmail réussi ; une demande
+invalide reçoit un statut 400. Le site conserve les champs en cas d’échec et
+n’effectue aucune nouvelle tentative automatique. Sans JavaScript, le formulaire
+effectue un POST natif et affiche la réponse JSON du service.
+
+Les origines autorisées sont `https://habycore.com`, `https://www.habycore.com`,
+`http://localhost:4321` et `http://127.0.0.1:4321`. Une nouvelle URL d’aperçu ou un
+autre domaine nécessite une adaptation du webhook et de sa validation d’origine.
+L’URL du webhook est publique ; aucun secret n’est placé dans le site.
+Le champ anti-spam ne remplace pas une protection contre les abus à fort volume.
+Les coordonnées et textes légaux présents sont repris de la maquette fournie.
+
+Vérification du raccordement le 26 novembre 2026 :
+
+- `npm run build` réussi : les deux pages statiques sont générées.
+- Envois FR et EN depuis le site compilé en aperçu local : confirmations affichées,
+  deux mails reçus et classés automatiquement sous `HABYCORE 🛸` dans Gmail.
+- Contenu, accents, retours à la ligne et adresse de réponse contrôlés.
+- Champs vides bloqués dans le navigateur ; le webhook renvoie un statut 400 pour
+  les champs vides, un e-mail invalide, un consentement absent, un objet inconnu,
+  un message trop long, une injection d’en-têtes ou une origine non autorisée.
+- Champ anti-spam rempli : réponse neutre 200, sans envoi de mail.
+- Le workflow n8n est publié. Le site modifié n’a pas été déployé.
 
 Le domaine, les URL canoniques, le sitemap, les visuels de partage et l’hébergement
 restent à configurer. Aucun suivi d’audience n’est ajouté.

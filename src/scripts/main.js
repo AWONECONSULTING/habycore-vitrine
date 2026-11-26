@@ -231,16 +231,51 @@ document.querySelectorAll('.slide').forEach(sl=>{
 /* formulaire */
 const form=document.getElementById('form');
 const emailOk=v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
-const check=el=>{const f=el.closest('.field');if(!f)return true;let ok=el.value.trim()!=='';if(ok&&el.type==='email')ok=emailOk(el.value.trim());f.classList.toggle('err',!ok);return ok;};
+const check=el=>{const f=el.closest('.field');if(!f)return true;let ok=el.value.trim()!=='';if(ok&&el.type==='email')ok=emailOk(el.value.trim());f.classList.toggle('err',!ok);el.setAttribute('aria-invalid',String(!ok));return ok;};
 form.querySelectorAll('.field [required]').forEach(el=>{el.addEventListener('blur',()=>{if(el.value)check(el);});el.addEventListener('input',()=>{if(el.closest('.field').classList.contains('err'))check(el);});});
 const consent=document.getElementById('f-consent'),consentL=document.getElementById('consentL');
 consent.addEventListener('change',()=>consentL.classList.toggle('err',!consent.checked));
-form.addEventListener('submit',e=>{e.preventDefault();let ok=true,first=null;
+const submit=form.querySelector('[type="submit"]'),submitLabel=submit.querySelector('[data-submit-label]');
+const submitText=submitLabel.textContent,status=document.getElementById('form-status');
+const formCopy=document.documentElement.lang==='fr'?{
+  sending:'Envoi en cours…',
+  invalid:'Merci de vérifier les champs et votre consentement avant de réessayer.',
+  error:'L’envoi n’a pas pu être confirmé. Vos champs sont conservés. Vous pouvez nous écrire à contact@habycore.com.'
+}:{
+  sending:'Sending…',
+  invalid:'Please check your details and consent before trying again.',
+  error:'Your submission could not be confirmed. Your details have been kept. You can email us at contact@habycore.com.'
+};
+let sending=false;
+form.addEventListener('submit',async e=>{e.preventDefault();if(sending)return;let ok=true,first=null;
+  status.hidden=true;status.textContent='';status.classList.remove('error');
   form.querySelectorAll('.field [required]').forEach(el=>{if(!check(el)){ok=false;first=first||el;}});
   if(!consent.checked){ok=false;consentL.classList.add('err');first=first||consent;}
   if(!ok){first.focus();return;}
-  form.classList.add('sent');});
-document.getElementById('again').addEventListener('click',()=>{form.reset();form.classList.remove('sent');});
+  sending=true;submit.disabled=true;form.setAttribute('aria-busy','true');
+  submitLabel.textContent=formCopy.sending;status.textContent=formCopy.sending;status.hidden=false;
+  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),30000);
+  try{
+    const response=await fetch(form.action,{
+      method:'POST',body:new URLSearchParams(new FormData(form)),
+      credentials:'omit',signal:controller.signal
+    });
+    if(!response.ok){
+      status.textContent=response.status===400?formCopy.invalid:formCopy.error;
+      throw new Error('Form submission failed');
+    }
+    const result=await response.json();
+    if(result.ok!==true)throw new Error('Submission not confirmed');
+    status.hidden=true;form.classList.add('sent');form.querySelector('.done h3').focus();
+  }catch{
+    if(status.textContent===formCopy.sending)status.textContent=formCopy.error;
+    status.classList.add('error');status.hidden=false;status.focus();
+  }finally{
+    clearTimeout(timeout);sending=false;submit.disabled=false;
+    form.removeAttribute('aria-busy');submitLabel.textContent=submitText;
+  }
+});
+document.getElementById('again').addEventListener('click',()=>{form.reset();form.classList.remove('sent');status.hidden=true;status.textContent='';document.getElementById('f-name').focus();});
 
 /* pages légales */
 const legal=document.getElementById('legal'),pages=['mentions-legales','conditions','confidentialite','accessibilite'];
