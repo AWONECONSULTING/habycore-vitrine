@@ -1,0 +1,73 @@
+---
+import { contactEndpoint } from '../config/contact.js';
+---
+<section class="band inv" id="contact">
+  <div class="wash" aria-hidden="true"></div>
+  <div class="wrap contact">
+    <div class="contact-intro">
+      <div class="kicker rv"><svg viewBox="0 0 187 206"><use href="#hc-mark"/></svg>Contact</div>
+      <h2 class="rv">Échangeons sur votre projet.</h2>
+      <p class="lead rv">Collaboration commerciale, prestation de conseil, formation ou partenariat : décrivez-nous votre demande, nous revenons vers vous rapidement.</p>
+      <div class="sign rv" id="sign" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <defs>
+            <radialGradient id="sgGlow"><stop offset="0" stop-color="#7377FE" stop-opacity=".55"/><stop offset="1" stop-color="#7377FE" stop-opacity="0"/></radialGradient>
+            <radialGradient id="sgFade"><stop offset="0" stop-color="#fff"/><stop offset=".7" stop-color="#fff" stop-opacity=".35"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+            <mask id="sgMask"><rect width="400" height="400" fill="url(#sgFade)"/></mask>
+            <linearGradient id="sgGlint" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BDF3DF" stop-opacity="0"/><stop offset=".5" stop-color="#BDF3DF"/><stop offset="1" stop-color="#BDF3DF" stop-opacity="0"/></linearGradient>
+          </defs>
+          <g mask="url(#sgMask)" id="sgGrid"></g>
+          <circle cx="200" cy="200" r="190" fill="url(#sgGlow)"/>
+          <circle class="wave" cx="200" cy="200" r="78"/>
+          <circle class="wave" cx="200" cy="200" r="78" style="animation-delay:1.2s"/>
+          <circle class="wave" cx="200" cy="200" r="78" style="animation-delay:2.4s"/>
+          <circle class="orbit" cx="200" cy="200" r="150"/>
+          <circle class="orbit" cx="200" cy="200" r="118" style="stroke-dasharray:2 7"/>
+          <g class="spin a"><circle cx="350" cy="200" r="6" fill="#BDF3DF"/><circle cx="350" cy="200" r="12" fill="#BDF3DF" opacity=".18"/></g>
+          <g class="spin b"><circle cx="82" cy="200" r="4.5" fill="#B5BAFF"/></g>
+          <svg x="128" y="121" width="144" height="158" viewBox="606 5026 187 206" overflow="visible">
+            <g class="breathe a"><use href="#hc-half-a"/></g>
+            <g class="breathe b"><use href="#hc-half-b"/></g>
+            <path class="sg-glint" pathLength="1" d="M616 5044 C 660 5108 720 5188 776 5224"/>
+          </svg>
+        </svg>
+      </div>
+    </div>
+
+    <form id="form" class="rv" action={contactEndpoint} method="post" accept-charset="UTF-8" novalidate aria-labelledby="contact-form-title">
+      <input type="hidden" name="language" value="fr">
+      <div class="form-trap" aria-hidden="true"><label for="f-website">Site web</label><input id="f-website" name="website" tabindex="-1" autocomplete="off"></div>
+      <div class="fields">
+        <div class="form-heading">
+          <span class="form-heading-icon" aria-hidden="true">↗</span>
+          <div><h3 id="contact-form-title">Parlez-nous de votre idée.</h3><p>Un projet, une question, une nouvelle collaboration.</p></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="f-name">Nom et prénom <em>*</em></label><input id="f-name" name="name" autocomplete="name" maxlength="150" required><span class="msg">Merci d'indiquer votre nom.</span></div>
+          <div class="field"><label for="f-company">Société</label><input id="f-company" name="company" autocomplete="organization" maxlength="200"></div>
+        </div>
+        <div class="field"><label for="f-email">E-mail professionnel <em>*</em></label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="254" required><span class="msg">Merci d'indiquer une adresse e-mail valide.</span></div>
+        <div class="field"><label for="f-subject">Objet de votre demande <em>*</em></label>
+          <select id="f-subject" name="subject" required>
+            <option value="">Sélectionnez un objet</option>
+            <option>Pack E-commerce et développement de marques</option>
+            <option>Pack Conseil et expertise technologique</option>
+            <option>Pack Formation et accompagnement</option>
+            <option>Partenariat commercial</option>
+            <option>Fournisseur</option>
+            <option>Autre demande</option>
+          </select><span class="msg">Merci de choisir l'objet de votre demande.</span></div>
+        <div class="field"><label for="f-msg">Votre message <em>*</em></label><textarea id="f-msg" name="message" maxlength="10000" required></textarea><span class="msg">Merci de préciser votre demande.</span></div>
+        <label class="consent" id="consentL"><input type="checkbox" id="f-consent" name="consent" required><span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="#confidentialite">politique de confidentialité</a>. <em>*</em></span></label>
+        <p id="form-status" class="form-status" role="status" aria-live="polite" tabindex="-1" hidden></p>
+        <div class="form-foot"><small>* Champs obligatoires</small><button class="btn mag" type="submit"><span data-submit-label>Envoyer le message</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+      </div>
+      <div class="done" role="status" aria-live="polite">
+        <div class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="#080C19" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></div>
+        <h3 tabindex="-1">Message envoyé</h3>
+        <p class="soft" style="margin:10px auto 22px;max-width:40ch">Votre demande a bien été transmise à HabyCore. Nous vous répondrons prochainement.</p>
+        <button class="btn ghost" type="button" id="again">Nouvelle demande</button>
+      </div>
+    </form>
+  </div>
+</section>
