@@ -1,4 +1,4 @@
-# HabyCore — Site vitrine
+# HabyCore
 
 Site corporate de HabyCore : entrepreneuriat digital, développement de marques
 e-commerce, conseil technologique et transmission de compétences.
@@ -53,8 +53,7 @@ des sections et la géométrie des SVG de la maquette sont conservés.
 
 ## Références et fidélité
 
-- Référence graphique : `HabyCore — Website (EN).html`, fourni par la designer.
-- Référence française : `HabyCore — Site vitrine.html`, dans le même dossier.
+- Références graphiques : fichiers HTML HabyCore en anglais et en français, fournis par la designer dans le même dossier.
 - Styles, couleurs, espacements, SVG, transitions et animations repris de la
   référence anglaise. L’accueil est en anglais ; `/fr/` conserve les textes français.
 - Seuils responsive conservés : 1080, 960, 640 et 420 px.
