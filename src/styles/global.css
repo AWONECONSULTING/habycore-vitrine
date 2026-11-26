@@ -731,7 +731,6 @@ footer ul a:hover{color:var(--indigo-d)}
 }
 @media (max-width:960px){
   .slide:not(.s){overflow-y:hidden;overscroll-behavior-x:contain;cursor:grab}
-  .slide.swipe-ready{touch-action:pan-y pinch-zoom}
   .slide.dragging{cursor:grabbing;scroll-snap-type:none!important;user-select:none}
   .slide.dragging *{user-select:none}
 }
